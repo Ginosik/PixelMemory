@@ -24,7 +24,6 @@ public class Carta : MonoBehaviour
             if (cm.CardClicked(this))
             {
                 TurnCard();
-                FindObjectOfType<AudioManager>().Play("CardReveal");
             }
         }
     }

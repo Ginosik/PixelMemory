@@ -10,26 +10,15 @@ public class CardManager : MonoBehaviour
     public delegate void VictoryConditionEventHandler();
     public event VictoryConditionEventHandler VictoryConditionSatisfied;
 
+    //Awake
     private void Awake()
     {
         cartas = new List<Carta>();
         SpawnCards();
         PositionCards();
-        //Para cada.
-        /*
-        foreach (Carta carta in GetComponentsInChildren<Carta>())
-        {
-            //Confere carta e se não existir adiciona.
-            if (!cartas.Contains(carta))
-            {
-                //Adicionar carta aqui.
-                cartas.Add(carta);
-                carta.SetCardManager(this);
-            }
-        }
-        */
     }
 
+    //Embaralha as cartas
     private List<Carta> ShuffleList()
     {
         List<Carta> shuffle = cartas;
@@ -43,6 +32,7 @@ public class CardManager : MonoBehaviour
         return shuffle;
     }
 
+    //Posiciona as cartas
     private void PositionCards()
     {
         cartas = ShuffleList();
@@ -61,6 +51,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    //Spawna cada carta
     private void SpawnCards()
     {
         for (int i = 0; i < GM.instance.cardPairs; i++)
@@ -78,6 +69,7 @@ public class CardManager : MonoBehaviour
         }
     }
 
+    //Confere se a carta foi clicada
     public bool CardClicked(Carta newCard)
     {
         if (card1 == null)
@@ -92,25 +84,12 @@ public class CardManager : MonoBehaviour
                 card2 = newCard;
                 return true;
             }
-            /*
-            else if (newCard != card2)
-            {
-                if (card1 != null && card2 != null)
-                {
-                    card1.TurnCard();
-                    card2.TurnCard();
-                    card1 = null;
-                    card2 = null;
-                    card1 = newCard;
-                    return true;
-                }
-            }
-            */
         }
 
         return false;
     }
 
+    //Compara as cartas entre si
     public void CompareCards()
     {
         if (card1 != null && card2 != null && !card1.IsTurning() && !card2.IsTurning())
@@ -142,6 +121,7 @@ public class CardManager : MonoBehaviour
                 card2.TurnCard();
                 card1 = null;
                 card2 = null;
+                FindObjectOfType<AudioManager>().Play("CardReveal");
             }
         }
     }

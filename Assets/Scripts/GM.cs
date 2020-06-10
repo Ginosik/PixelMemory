@@ -6,12 +6,12 @@ public class GM : MonoBehaviour
 {
     public CardManager cm;
     public static GM instance { get; private set; }
-    [Range(2,8)]
+    [Range(2, 8)]
     public int cardPairs = 3;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(this);
@@ -20,10 +20,7 @@ public class GM : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-
-
-
+        
 
         cm.VictoryConditionSatisfied += VictoryConditionSatisfied;
     }
