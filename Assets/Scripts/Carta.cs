@@ -10,7 +10,7 @@ public class Carta : MonoBehaviour
     private bool turned = false;
     private CardManager cm;
     private Coroutine turneCoroutine;
-    public float turnSpeed = 300;
+    public float turnSpeed = 60000;
 
     public bool IsTurning()
     {
@@ -24,6 +24,7 @@ public class Carta : MonoBehaviour
             if (cm.CardClicked(this))
             {
                 TurnCard();
+                FindObjectOfType<AudioManager>().Play("CardReveal");
             }
         }
     }
