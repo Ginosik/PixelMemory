@@ -36,7 +36,7 @@ public class CardManager : MonoBehaviour
     private void PositionCards()
     {
         cartas = ShuffleList();
-        Vector2 cardPosition = new Vector2(-3.5f, -1f);
+        Vector2 cardPosition = new Vector2(-3.5f, -1.25f);
         int index = 0;
         for (int y = 1; y <= 2; y++)
         {
@@ -46,7 +46,7 @@ public class CardManager : MonoBehaviour
                 cardPosition.x += 1;
                 index++;
             }
-            cardPosition.y += 2;
+            cardPosition.y += 2.5f;
             cardPosition.x = -3.5f;
         }
     }
@@ -107,6 +107,7 @@ public class CardManager : MonoBehaviour
                 }
                 Destroy(card1.gameObject);
                 Destroy(card2.gameObject);
+                FindObjectOfType<AudioManager>().Play("Match");
                 if (cartas.Count == 0)
                 {
                     if (VictoryConditionSatisfied != null)
