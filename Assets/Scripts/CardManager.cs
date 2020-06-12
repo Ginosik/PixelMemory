@@ -113,6 +113,8 @@ public class CardManager : MonoBehaviour
                     if (VictoryConditionSatisfied != null)
                     {
                         VictoryConditionSatisfied();
+                        Debug.Log("Screen Height : " + Screen.height);
+                        Debug.Log("Screen Width : " + Screen.width);
                     }
                 }
             }
