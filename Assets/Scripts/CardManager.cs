@@ -36,18 +36,18 @@ public class CardManager : MonoBehaviour
     private void PositionCards()
     {
         cartas = ShuffleList();
-        Vector2 cardPosition = new Vector2(-3.5f, -1.25f);
+        Vector2 cardPosition = new Vector2(-.9f, -1.8f);
         int index = 0;
-        for (int y = 1; y <= 2; y++)
+        for (int y = 1; y <= 4; y++)
         {
-            for (int x = 0; x < 8; x++)
+            for (int x = 0; x < 4; x++)
             {
                 cartas[index].transform.localPosition = cardPosition;
-                cardPosition.x += 1;
+                cardPosition.x += .6f;
                 index++;
             }
-            cardPosition.y += 2.5f;
-            cardPosition.x = -3.5f;
+            cardPosition.y += 1.2f;
+            cardPosition.x = -.9f;
         }
     }
 
